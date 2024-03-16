@@ -1,0 +1,50 @@
+UserInput--Abaixo estará Lib da nossa Ui
+
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7yhx/kwargs_Ui_Library/main/source.lua"))()
+
+local UI = Lib:Create{
+    Theme = "Dark", -- or any other theme
+    Size = UDim2.new(0, 555, 0, 400) -- default
+ }
+ 
+ local Main = UI:Tab{
+    Name = "Inicio"
+ }
+ 
+ local Divider = Main:Divider{
+    Name = "Inicio shit"
+ }
+ 
+ local QuitDivider = Main:Divider{
+    Name = "Sair"
+ }
+
+ ocal players = game:GetService("Players")
+ local localPlayer = players.LocalPlayer
+ 
+ local enemyTeamColor = Color3.new(1, 0, 0) -- Vermelho
+ local friendlyTeamColor = Color3.new(0, 0, 1) -- Azul
+ 
+ local function checkPlayerTeam(player)
+     if player.TeamColor == enemyTeamColor then
+         return "Inimigo"
+     elseif player.TeamColor == friendlyTeamColor then
+         return "Amigo"
+     else
+         return "Neutro"
+     end
+ end
+ 
+ for _, player in pairs(players:GetPlayers()) do
+     if player ~= localPlayer then
+         local playerName = player.Name
+         local playerTeam = checkPlayerTeam(player)
+         print(playerName .. " está na equipe: " .. playerTeam)
+     end
+ end
+ local UserInputService = game:GetService("UserInputService")
+ local atalhoTecla = Enum.KeyCode.P
+ local function abrirScript(P)
+     print
+ end
+ UserInputService.InputBegan:Connect(function(input, gameProcessed
